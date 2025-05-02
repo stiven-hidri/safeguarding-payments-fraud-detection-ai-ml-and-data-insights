@@ -51,6 +51,19 @@ resource "aws_eks_access_entry" "this" {
   )
 }
 
+# output "debug_principal_arn" {
+#   value = format(
+#     "arn:%s:iam::%s:role/%s",
+#     data.aws_partition.this.partition,
+#     data.aws_caller_identity.this.account_id,
+#     element(local.roles, count.index)
+#   )
+# }
+
+output "my_debug" {
+  value = local.roles
+}
+
 resource "aws_eks_access_policy_association" "this" {
   count        = local.roles == [] ? 0 : length(local.roles)
   cluster_name = aws_eks_cluster.this.name
