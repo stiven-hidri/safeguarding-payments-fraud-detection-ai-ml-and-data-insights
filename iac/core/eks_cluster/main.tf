@@ -56,7 +56,7 @@ output "debug_principal_arn" {
     "arn:%s:iam::%s:role/%s",
     data.aws_partition.this.partition,
     data.aws_caller_identity.this.account_id,
-    element(local.roles, count.index)
+    element(local.roles)
   )
 }
 
