@@ -61,7 +61,7 @@ resource "aws_eks_access_entry" "this" {
 # }
 
 output "my_debug" {
-  value = var.spf_eks_access_roles
+  value = local.roles == [] ? 0 : length(local.roles)
 }
 
 resource "aws_eks_access_policy_association" "this" {
